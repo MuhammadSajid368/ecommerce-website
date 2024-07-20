@@ -28,7 +28,10 @@
       },
       {
         "src": "/(.*)",
-        "dest": "client/$1"
+        "dest": "client/$1",
+        "headers": {
+          "Cache-Control": "s-maxage=31536000, immutable"
+        }
       }
     ],
     "env": {
