@@ -1,0 +1,39 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "client/build"
+        }
+      },
+      {
+        "src": "server/index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "server/api/$1"
+      },
+      {
+        "src": "/cart/(.*)",
+        "dest": "server/cart/$1"
+      },
+      {
+        "src": "/product/(.*)",
+        "dest": "server/product/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "client/$1"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "API_URL": "https://api.example.com"
+    }
+  }
+  
